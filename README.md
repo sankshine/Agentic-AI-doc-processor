@@ -1,6 +1,6 @@
 # 🏢 Real Estate AI Agent — Agentic Document Processing & Portfolio Management
 
-> **Automated 72% of real estate lease processing** using Multi-Agent AI with LangGraph orchestration, Milvus vector database, and LLaMA 3.1 70B for extraction — achieving **$1.2M annual cost savings** and identifying **$5.8M in portfolio opportunities** at Bell Canada.
+> **Automated 72% of real estate lease processing** using Multi-Agent AI with LangGraph orchestration, Milvus vector database, and LLaMA 3.1 70B for extraction — achieving **$1.2M annual cost savings** and identifying **$5.8M in portfolio opportunities** at XX Company Canada.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![LangGraph](https://img.shields.io/badge/LangGraph-Orchestration-green)
@@ -33,7 +33,7 @@
 
 ## 🎯 Problem Statement
 
-Bell Canada's Real Estate Operations (BRES) team managed **2,000+ properties** with **1,000+ lease documents processed monthly**, facing:
+XX Company Canada's Real Estate Operations (XRES) team managed **2,000+ properties** with **1,000+ lease documents processed monthly**, facing:
 
 ### Challenges:
 - ⏱️ **Manual Processing**: 2-3 hours per lease document for data extraction
@@ -1217,7 +1217,7 @@ MIT License - see [LICENSE](LICENSE) for details
 
 ## 🙏 Acknowledgments
 
-- Bell Canada Real Estate Team
+- XX Company Canada Real Estate Team
 - LangChain/LangGraph team
 - Milvus/Zilliz team
 - Meta AI (LLaMA models)
