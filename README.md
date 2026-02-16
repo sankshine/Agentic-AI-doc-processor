@@ -188,19 +188,19 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 └───────────────────────────────────┬─────────────────────────────────────────┘
                                     │
                                     ▼
-┌────────────────────────────────────────────────────────────────────────────┐
-│                          OUTPUT LAYER                                      │
-│                                                                            │
-│  ┌────────────────────┐  ┌────────────────────┐  ┌──────────────────────┐  │
-│  │     Dashboard      │  │     Alert Engine   │  │     Report Generator │  │
-│  │                    │  │                    │  │                      │  │
-│  │                    │  │  • Email alerts    │  │  • Executive reports │  │
-│  │  • REST endpoints  │  │  • Slack notify    │  │  • Compliance PDFs   │  │
-│  │                    │  │  • SMS for critical│  │  • Excel exports     │  │
-│  │                    │  │  • Real-time       │  │  • Custom templates  │  │
-│  │                    │  │                    │  │                      │  │
-│  └────────────────────┘  └────────────────────┘  └──────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────┐
+│                          OUTPUT LAYER        │
+│                                              │
+│  ┌────────────────────────────────────────┐  │
+│  │          Report Generator              │  │
+│  │                                        │  │
+│  │                • Executive reports     │  │
+│  │                • Compliance PDFs       │  │
+│  │                • Excel exports         │  │
+│  │                • Custom templates      │  │
+│  │                                        │  │
+│  └────────────────────────────────────────┘  │
+└──────────────────────────────────────────────┘
 
                                 PROCESSING TIMELINE
                     
