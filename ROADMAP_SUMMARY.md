@@ -97,20 +97,8 @@
   - $1.50 per 1,000 pages
   - Confidence scoring per word
   
-- Tesseract fallback (secondary)
-  - 92% accuracy (free)
-  - Used when Google Vision fails
-  - Handles poor quality scans
 
-**Quality Scoring System:**
-```python
-if google_vision_confidence > 0.9:
-    use_google_vision_result()
-elif google_vision_confidence > 0.7:
-    flag_for_human_review()
-else:
-    try_tesseract_fallback()
-```
+
 
 **Results:**
 - 95%+ overall OCR accuracy
