@@ -404,7 +404,7 @@ ONTARIO_RULES = [
 
 ---
 
-## 📅 MONTH 4: Integration & Testing (April 2024)
+## MONTH 4: Integration & Testing
 
 ### Week 1-2: LangGraph Orchestration
 **Implementation:**
@@ -578,8 +578,7 @@ else:
 
 ---
 
-## 📅 MONTH 5: Beta & Optimization (May 2024)
-
+##  MONTH 5: Beta & Optimization 
 ### Week 1: Beta Launch
 **Beta Users:**
 - 4 analysts selected
@@ -628,29 +627,12 @@ else:
    - Cost analysis
    - Edit functionality
 
-4. Compliance Dashboard
-   - Filter by risk level
-   - Filter by status (open/resolved)
-   - Bulk actions
-   - Export to CSV
-
-5. Analytics
-   - Processing time trends
+4.  Analytics
    - Accuracy over time
    - Opportunity funnel
    - Cost savings tracker
 
-**UX Features:**
-- Real-time WebSocket updates
-- Mobile responsive
-- Dark mode support
-- Keyboard shortcuts
-- Accessibility (WCAG AA)
 
-**Performance:**
-- Initial load: < 2 seconds
-- Time to interactive: < 3 seconds
-- Lighthouse score: 95+
 
 ---
 
@@ -726,24 +708,11 @@ vllm_config = {
 - Result: Robert found AI caught issue he missed
 - Outcome: Robert became internal champion
 
-**Story:**
-```
-Week 1: Robert: "I don't need AI."
-Week 2: You: "Can you test and give feedback?" (feels valued)
-Week 3: Implemented Robert's 3 feature requests
-Week 4: AI finds $2M sublease opportunity Robert didn't see
-Week 5: Robert to team: "This tool is actually great"
-Week 8: Adoption jumps from 40% → 65%
-```
 
 **Strategy 3: Show Value**
 - $2M opportunity showcase (team meeting)
 - Local news article on innovation
 
-**Strategy 4: Gamification**
-- Monthly leaderboard: "Most time saved"
-- Recognition: Quarterly "AI Insights Award"
-- Gift cards for top users
 
 **Results:**
 - Week 1: 40% adoption
@@ -763,7 +732,7 @@ Week 8: Adoption jumps from 40% → 65%
 
 ---
 
-## 📅 MONTH 6: Production Launch (June 2024)
+## 📅 MONTH 6: Production Launch 
 
 ### Week 1: Production Infrastructure
 **Docker Deployment:**
@@ -775,27 +744,16 @@ services:
   - redis (cache)
   - milvus (vector DB)
   - vllm (GPU inference)
-  - celery (background tasks)
-  - nginx (reverse proxy)
 ```
 
-**Kubernetes Configuration:**
-- 3 backend pods (load balanced)
-- 2 frontend pods
-- 4 celery workers
-- Auto-scaling: 2-10 pods based on load
 
 **GPU Cluster:**
 - 4× NVIDIA A100 80GB
-- NVLink interconnect
-- Liquid cooling
 - 99.9% uptime SLA
 
 **Monitoring:**
-- Prometheus metrics
 - Grafana dashboards
 - Sentry error tracking
-- PagerDuty alerts
 
 **Capacity Planning:**
 - Current: 100 docs/day
@@ -804,32 +762,11 @@ services:
 
 ---
 
-### Week 1-2: Security Hardening
-**Security Measures:**
-1. **Penetration Testing**
-   - External firm hired
-   - OWASP Top 10 testing
-   - 23 issues found, all fixed
-
-2. **Data Encryption**
-   - At rest: AES-256
-   - In transit: TLS 1.3
-   - Database: Encrypted columns (PII)
-
-3. **Access Controls**
-   - RBAC (Role-Based Access Control)
-   - 4 roles: Admin, Analyst, Reviewer, Viewer
-   - MFA required for production
-
-4. **Audit Logging**
-   - Complete audit trail
-   - Immutable logs
-
 
 
 ---
 
-### Week 3: Production Launch
+### Week 2-3: Production Launch
 **Rollout Strategy:**
 - Week 1: 3 analysts (beta users)
 - Week 2: +3 more (6 total)
@@ -840,14 +777,7 @@ services:
 - 2-day intensive training
 - Hands-on practice
 - Video tutorials created
-- Documentation wiki
-
-**Launch Day (June 17, 2024):**
-- 9am: All systems go
-- 10am: First production document processed
-- 11am: First compliance issue found
-- 2pm: First $500K opportunity identified
-- 5pm: 15 documents processed successfully
+- Documentation confluence
 
 **Support:**
 - Dedicated Slack channel
@@ -855,11 +785,6 @@ services:
 - Hotfix team on standby
 - On-call rotation (24/7)
 
-**Issues Encountered:**
-- Day 1: Redis connection timeout → Fixed in 30 min
-- Day 2: GPU memory leak → Fixed in 2 hours
-- Day 3: OCR quality drop → Retrained model
-- Day 4-7: Smooth operation
 
 **Adoption:**
 - Week 1: 70% (7/10 analysts)
@@ -909,23 +834,9 @@ services:
 
 ---
 
-## 📊 SUCCESS METRICS SUMMARY
 
-### KPI Tracking (Month by Month)
 
-| KPI | Target | M3 | M4 | M5 | M6 | Status |
-|-----|--------|----|----|----|----|--------|
-| **Automation Rate** | 70% | 45% | 58% | 65% | **72%** | ✅ Exceeded |
-| **Accuracy** | >95% | 89% | 93% | 96% | **98%** | ✅ Exceeded |
-| **User Adoption** | 80% | 25% | 40% | 65% | **85%** | ✅ Exceeded |
-| **Processing Time** | <5 min | 8 min | 5.5 min | 3.8 min | **3.2 min** | ✅ Exceeded |
-| **Cost Savings** | $1M | $0 | $0 | $200K | **$1.2M** | ✅ Exceeded |
-| **Opportunities** | $3M | $0 | $800K | $3.2M | **$5.8M** | ✅✅ 2x |
-| **Compliance** | 50 | 8 | 23 | 54 | **87** | ✅ Exceeded |
-
----
-
-## 💰 BUDGET BREAKDOWN
+##  BUDGET BREAKDOWN
 
 ### Total Budget: $915,000
 
@@ -934,10 +845,9 @@ services:
 - ML Engineers (2): $300,000
 - Backend Developer: $120,000
 - Frontend Developer: $100,000
-- DevOps (0.5 FTE): $50,000
+- DevOps (1 FTE): $50,000
 
-**Infrastructure (Year 1): $129,000**
-- GPU Servers (4× A100): $60,000
+**Infrastructure (Year 1): $70,000**
 - PostgreSQL + Redis: $12,000
 - Milvus setup: $18,000
 - OCR API credits: $15,000
@@ -956,30 +866,30 @@ services:
 
 
 
-## 🎯 KEY LESSONS LEARNED
+##  KEY LESSONS LEARNED
 
-### What Went Well ✅
+### What Went Well 
 1. **Early stakeholder buy-in** - 150+ user stories upfront
 2. **Rapid prototyping** - POCs in week 2-3
 3. **Change management** - Robert champion strategy
 4. **Weekly feedback loops** - 5 day avg fix time
 5. **Clear metrics** - Everyone knew the targets
 
-### Challenges Overcome 💪
+### Challenges Overcome 
 1. **User resistance** → Repositioned as assistant, made skeptic a champion
 2. **Data quality** → HITL workflow, confidence thresholds
 3. **LLM hallucinations** → Source citations, two-pass verification
 4. **GPU availability** → Early procurement (M1)
 5. **Compliance drift** → Regional rules, feedback loop
 
-### Would Do Differently 🔄
+### Would Do Differently 
 1. Start change management in Month 1 (not Month 5)
 2. Involve Legal earlier (got buy-in in M4, should be M1)
 3. More aggressive timeline on frontend (pushed to M5)
 4. Larger test set earlier (1000 docs in M4, should be M3)
 5. Beta with 6 users instead of 4
 
-### Critical Success Factors 🌟
+### Critical Success Factors 
 1. **Data sovereignty** requirement → Forced on-prem → Better cost
 2. **$2M opportunity** showcase → Changed team perception
 3. **Robert conversion** → Internal champion crucial
@@ -995,7 +905,7 @@ services:
 - **ML Engineers:** 2 FTE
 - **Backend Developer:** 1 FTE
 - **Frontend Developer:** 1 FTE
-- **DevOps Engineer:** 0.5 FTE
+- **DevOps Engineer:** 1 FTE
 
 **Total:** 5.5 FTE
 
@@ -1004,7 +914,7 @@ services:
 - **Budget Approver:** CFO
 - **Compliance:** Legal team
 - **Infrastructure:** IT department
-- **End Users:** 10 real estate analysts
+- **End Users:** 5 real estate analysts
 - **Champions:** Robert (converted skeptic)
 
 ### External Partners
@@ -1047,5 +957,4 @@ This 6-month roadmap transformed XX Company Canada's real estate operations:
 **Status:** ✅ **PROJECT SUCCESSFUL - ALL OBJECTIVES EXCEEDED**
 
 **Prepared by:** Sana Khan, Product Owner
-**Date:** XX
-**Version:** 1.0 Final
+
