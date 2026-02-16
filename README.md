@@ -1,4 +1,4 @@
-# 🏢 Real Estate AI Agent — Agentic Document Processing & Portfolio Management
+# Real Estate AI Agent — Agentic Document Processing & Portfolio Management
 
 > **Automated 72% of real estate lease processing** using Multi-Agent AI with LangGraph orchestration, Milvus vector database, and LLaMA 3.1 70B for extraction — achieving **$1.2M annual cost savings** and identifying **$5.8M in portfolio opportunities** at XX Company Canada.
 
@@ -12,7 +12,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 - [Problem Statement](#problem-statement)
 - [Solution Overview](#solution-overview)
 - [Architecture](#architecture)
@@ -31,17 +31,17 @@
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement
 
 XX Company Canada's Real Estate Operations (XRES) team managed **2,000+ properties** with **1,000+ lease documents processed monthly**, facing:
 
 ### Challenges:
-- ⏱️ **Manual Processing**: 2-3 hours per lease document for data extraction
-- ❌ **High Error Rate**: 12% error rate in manual extraction causing downstream delays
-- 📊 **Data Silos**: Disconnected systems across Finance, Legal, and Real Estate teams
-- ⚖️ **Compliance Risks**: Manual compliance checking — 87 compliance issues missed annually
-- 💰 **Hidden Costs**: $5.8M in sublease opportunities and cost optimizations unidentified
-- 📚 **Massive Backlog**: 150+ user stories waiting for automation
+-  **Manual Processing**: 2-3 hours per lease document for data extraction
+-  **High Error Rate**: 12% error rate in manual extraction causing downstream delays
+-  **Data Silos**: Disconnected systems across Finance, Legal, and Real Estate teams
+-  **Compliance Risks**: Manual compliance checking — 87 compliance issues missed annually
+-  **Hidden Costs**: $5.8M in sublease opportunities and cost optimizations unidentified
+-  **Massive Backlog**: 150+ user stories waiting for automation
 
 ### Business Impact:
 - **$1.5M annual cost** in manual processing labor
@@ -63,20 +63,20 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 ✅ **Human-in-the-Loop** for quality assurance
 
 ### Key Achievements:
-- 📈 **72% Automation Rate** (exceeded 70% target)
-- ⚡ **3.2 min processing time** (vs 2-3 hours manually)
-- 🎯 **98% accuracy** on critical fields (tenant, rent, dates)
-- 💰 **$1.2M annual savings** + **$5.8M opportunities identified**
-- 👥 **85% user adoption** (from 40% initial resistance)
-- 📊 **420% ROI** over 3 years
+-  **72% Automation Rate** (exceeded 70% target)
+-  **3.2 min processing time** (vs 2-3 hours manually)
+-  **98% accuracy** on critical fields (tenant, rent, dates)
+-  **$1.2M annual savings** + **$5.8M opportunities identified**
+-  **85% user adoption** (from 40% initial resistance)
+-  **420% ROI** over 3 years
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                            🌐 USER INTERFACE                                 │
+│                             USER INTERFACE                                 │
 │  ┌──────────────────────┐  ┌──────────────────┐  ┌──────────────────────┐  │
 │  │  Web Dashboard       │  │  Chatbot UI      │  │  Mobile App          │  │
 │  │  (React/Next.js)     │  │  (WebSocket)     │  │  (React Native)      │  │
@@ -85,7 +85,7 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                         📥 INGESTION LAYER                                   │
+│                          INGESTION LAYER                                   │
 │  ┌────────────┐  ┌────────────┐  ┌──────────────┐  ┌──────────────────┐   │
 │  │  Email     │  │  Physical  │  │    Cloud     │  │   API Upload     │   │
 │  │  Server    │  │  Scanner   │  │   Storage    │  │   (drag-drop)    │   │
@@ -94,7 +94,7 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                      ⚙️ PROCESSING PIPELINE                                  │
+│                       PROCESSING PIPELINE                                  │
 │  ┌──────────────┐  ┌──────────┐  ┌─────────┐  ┌────────────────────────┐  │
 │  │  Document    │→ │   OCR    │→ │ Chunker │→ │  Embeddings Generator  │  │
 │  │  Validator   │  │ (95%+)   │  │ (512tok)│  │  (384-dim vectors)     │  │
@@ -105,16 +105,16 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                     🤖 AI AGENT LAYER (LangGraph)                            │
+│                      AI AGENT LAYER (LangGraph)                            │
 │                                                                              │
 │   ┌─────────────────┐                                                       │
-│   │  🎯 LLM Router  │  (LLaMA 3.2 8B - Fast Classification)                 │
+│   │   LLM Router  │  (LLaMA 3.2 8B - Fast Classification)                 │
 │   │                 │  Determines document type & complexity                 │
 │   └────────┬────────┘                                                       │
 │            │                                                                 │
 │            ▼                                                                 │
 │   ┌─────────────────────────────────────────────────────────────┐           │
-│   │  📄 Document Parser Agent                                   │           │
+│   │   Document Parser Agent                                   │           │
 │   │  (LLaMA 3.1 70B + RAG)                                      │           │
 │   │                                                              │           │
 │   │  • Extracts: Tenant, Rent, Dates, Terms, Clauses           │           │
@@ -127,7 +127,7 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 │            ┌────────────┴────────────┐                                       │
 │            ▼                         ▼                                       │
 │   ┌──────────────────┐      ┌──────────────────┐                           │
-│   │  ⚖️ Compliance   │      │  💰 Cost Analysis │                           │
+│   │   Compliance     │      │   Cost Analysis  │                           │
 │   │     Agent        │      │      Agent        │   (Parallel Processing)   │
 │   │  (Hybrid AI+Rules)│     │  (LLaMA 3.1 70B) │                           │
 │   │                  │      │                   │                           │
@@ -140,7 +140,7 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 │              └────────────┬───────────┘                                      │
 │                           ▼                                                  │
 │              ┌────────────────────────┐                                      │
-│              │  🎼 Orchestrator       │                                      │
+│              │     Orchestrator       │                                      │
 │              │  (LangGraph Workflow)  │                                      │
 │              │                        │                                      │
 │              │  • State management    │                                      │
@@ -154,16 +154,16 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 │     ┌────────────────┐      ┌────────────────┐                              │
 │     │ High Confidence│      │ Low Confidence │                              │
 │     │    (>90%)      │      │    (<70%)      │                              │
-│     │ Auto-Approve ✅│      │ Human Review 👤│                              │
+│     │ Auto-Approve   │      │ Human Review   │                              │
 │     └────────────────┘      └────────────────┘                              │
 └───────────────────────────────────┬─────────────────────────────────────────┘
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                      💾 DATA & STORAGE LAYER                                 │
+│                        DATA & STORAGE LAYER                                 │
 │                                                                              │
 │  ┌────────────────────┐  ┌────────────────────┐  ┌──────────────────────┐  │
-│  │  📊 Real Estate DB │  │  📚 Vector Database│  │  ⚡ Redis Cache      │  │
+│  │     Real Estate DB │  │     Vector Database│  │     Redis Cache      │  │
 │  │  (PostgreSQL)      │  │  (Milvus)          │  │                      │  │
 │  │                    │  │                    │  │  • API responses     │  │
 │  │  Tables:           │  │  • 50K+ chunks     │  │  • Session data      │  │
@@ -180,7 +180,7 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 │  └────────────────────┘  └────────────────────┘  └──────────────────────┘  │
 │                                                                              │
 │  ┌────────────────────────────────────────────────────────────────────────┐ │
-│  │  📝 Audit Logs (Complete History)                                      │ │
+│  │     Audit Logs (Complete History)                                      │ │
 │  │  • Who uploaded what document when                                     │ │
 │  │  • Which agent processed (with timing)                                 │ │
 │  │  • What was extracted (with confidence scores)                         │ │
@@ -192,10 +192,10 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
                                     │
                                     ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        📤 OUTPUT LAYER                                       │
+│                          OUTPUT LAYER                                       │
 │                                                                              │
 │  ┌────────────────────┐  ┌────────────────────┐  ┌──────────────────────┐  │
-│  │  📊 Dashboard API  │  │  🚨 Alert Engine   │  │  📄 Report Generator │  │
+│  │     Dashboard API  │  │     Alert Engine   │  │     Report Generator │  │
 │  │  (FastAPI)         │  │                    │  │                      │  │
 │  │                    │  │  • Email alerts    │  │  • Executive reports │  │
 │  │  • REST endpoints  │  │  • Slack notify    │  │  • Compliance PDFs   │  │
@@ -205,7 +205,7 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 │  └────────────────────┘  └────────────────────┘  └──────────────────────┘  │
 └─────────────────────────────────────────────────────────────────────────────┘
 
-                              ⏱️ PROCESSING TIMELINE
+                                PROCESSING TIMELINE
                     
 Upload → OCR (20s) → Chunk (5s) → Embed (10s) → LLM Router (2s) →
 Parser (45s) → [Compliance (30s) + Cost (30s) in parallel] → 
@@ -246,9 +246,9 @@ TOTAL: ~3.2 minutes (vs 2-3 hours manual)
 
 ---
 
-## 🔑 Key Components
+##   Key Components
 
-### 📥 Processing Pipeline
+###  Processing Pipeline
 
 #### 1. Document Validator
 ```python
@@ -425,7 +425,7 @@ class EmbeddingsGenerator:
 - Batch processing: 32 chunks in 1.2 seconds
 - GPU accelerated (3x faster than CPU)
 
-### 🤖 AI Agent Layer
+###   AI Agent Layer
 
 #### 1. LLM Router Agent
 **Purpose**: Fast document classification
@@ -671,7 +671,7 @@ def create_workflow() -> StateGraph:
 - ✅ State persistence (resume if crash)
 - ✅ Built-in retry logic
 
-### 💾 Data & Storage
+### Data & Storage
 
 [See architecture diagram for detailed breakdown]
 
@@ -689,7 +689,7 @@ def create_workflow() -> StateGraph:
 
 ---
 
-## 🎼 LangGraph Orchestration
+##  LangGraph Orchestration
 
 [See detailed code example in previous section]
 
@@ -728,7 +728,7 @@ START → Validate → OCR → Route ┬→ [confidence < 0.5] → Human Review 
 
 ---
 
-## 🔍 Vector Database Strategy
+##  Vector Database Strategy
 
 ### Why Milvus?
 
@@ -930,7 +930,7 @@ class ModelEvaluator:
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 ### Docker Infrastructure
 
@@ -1094,17 +1094,17 @@ docker exec vllm nvidia-smi
 ### Business Impact
 
 **Cost Savings**:
-- 💰 **$1.2M annual savings** (analyst time reduction)
-- 💰 **$180K GPU infrastructure savings** (vs buying 20+ CPU servers)
-- 💰 **$1.4M renegotiation opportunities** identified
-- 💰 **$2.1M sublease potential** discovered
-- 💰 **$2.3M space optimization** opportunities
+-  **$1.2M annual savings** (analyst time reduction)
+-  **$180K GPU infrastructure savings** (vs buying 20+ CPU servers)
+-  **$1.4M renegotiation opportunities** identified
+-  **$2.1M sublease potential** discovered
+-  **$2.3M space optimization** opportunities
 
 **Opportunities Identified**:
-- 🏢 **$5.8M total value** in portfolio optimizations
-- 📊 **87 compliance issues** caught proactively
-- 🔍 **23 high-risk leases** flagged for review
-- 💡 **142 cost reduction opportunities** found
+-  **$5.8M total value** in portfolio optimizations
+-  **87 compliance issues** caught proactively
+-  **23 high-risk leases** flagged for review
+-  **142 cost reduction opportunities** found
 
 **ROI**:
 - Year 1: 105% ROI ($1.87M benefits - $915K costs)
@@ -1137,21 +1137,8 @@ docker exec vllm nvidia-smi
 
 ---
 
-## 🎥 Demo & Screenshots
 
-[Add screenshots of:]
-1. Dashboard overview
-2. Document upload interface
-3. Processing status tracker
-4. Extracted data view
-5. Compliance alerts
-6. Cost analysis report
-7. Admin panel
-8. Analytics dashboard
-
----
-
-## 📚 Documentation
+##  Documentation
 
 - [API Documentation](docs/API.md) - Complete API reference
 - [Architecture Deep Dive](docs/ARCHITECTURE.md) - Technical details
@@ -1159,84 +1146,8 @@ docker exec vllm nvidia-smi
 - [Development Guide](docs/DEVELOPMENT.md) - Contributing
 - [Troubleshooting](docs/TROUBLESHOOTING.md) - Common issues
 
----
 
-## 🤝 Contributing
 
-Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) first.
 
-### Development Setup
-
-```bash
-# Clone repository
-git clone https://github.com/yourusername/real-estate-ai-agent.git
-cd real-estate-ai-agent
-
-# Backend setup
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-
-# Frontend setup
-cd frontend
-npm install
-npm run dev
-```
-
-### Running Tests
-
-```bash
-# Backend tests
-pytest tests/ -v --cov=app
-
-# Frontend tests
-npm test
-
-# E2E tests
-npm run test:e2e
-```
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details
-
----
-
-## 👤 Author
-
-**Sana Khan**
-- LinkedIn: [linkedin.com/in/sankshine](https://linkedin.com/in/sankshine)
-- GitHub: [github.com/sankshine](https://github.com/sankshine)
-- Email: sana@example.com
-
----
-
-## 🙏 Acknowledgments
-
-- XX Company Canada Real Estate Team
-- LangChain/LangGraph team
-- Milvus/Zilliz team
-- Meta AI (LLaMA models)
-- All contributors and users
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Multi-language support (French Canadian)
-- [ ] Mobile app (React Native)
-- [ ] Voice interface (speech-to-text queries)
-- [ ] Advanced analytics (predictive models)
-- [ ] Integration with external systems (Salesforce, SAP)
-- [ ] Blockchain audit trail
-- [ ] AutoML for continuous model improvement
-
----
-
-**Built with ❤️ using Agentic AI, LangGraph, Milvus, and LLaMA**
 
 *Automating real estate operations one document at a time.*
