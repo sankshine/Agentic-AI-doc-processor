@@ -33,18 +33,17 @@
 
 ## Problem Statement
 
-XX Company Canada's Real Estate Operations (XRES) team managed **2,000+ properties** with **1,000+ lease documents processed monthly**, facing:
+XX Company Canada's Real Estate Operations (XRES) team managed **3,500+ properties**, facing:
 
 ### Challenges:
 -  **Manual Processing**: 2-3 hours per lease document for data extraction
 -  **High Error Rate**: 12% error rate in manual extraction causing downstream delays
 -  **Data Silos**: Disconnected systems across Finance, Legal, and Real Estate teams
--  **Compliance Risks**: Manual compliance checking — 87 compliance issues missed annually
 -  **Hidden Costs**: $5.8M in sublease opportunities and cost optimizations unidentified
 -  **Massive Backlog**: 150+ user stories waiting for automation
 
 ### Business Impact:
-- **$1.5M annual cost** in manual processing labor
+- **$500K annual cost** in manual processing labor
 - **3-6 month delays** in portfolio optimization decisions
 - **Legal/financial risks** from missed compliance issues
 - **Opportunity cost** from unidentified sublease potential
@@ -68,74 +67,73 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 -  **98% accuracy** on critical fields (tenant, rent, dates)
 -  **$1.2M annual savings** + **$5.8M opportunities identified**
 -  **85% user adoption** (from 40% initial resistance)
--  **420% ROI** over 3 years
+-  **420% ROI** over 3 years (net profit/cost of investment) x 100
 
 ---
 
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                             USER INTERFACE                                 │
-│  ┌──────────────────────┐  ┌──────────────────┐  ┌──────────────────────┐  │
-│  │  Web Dashboard       │  │  Chatbot UI      │  │  Mobile App          │  │
-│  │  (React/Next.js)     │  │  (WebSocket)     │  │  (React Native)      │  │
-│  └──────────────────────┘  └──────────────────┘  └──────────────────────┘  │
-└───────────────────────────────────┬─────────────────────────────────────────┘
+┌────────────────────────────────────────────────────┐
+│                   USER INTERFACE                   │
+│  ┌──────────────────────┐  ┌──────────────────┐    │
+│  │  Web Dashboard       │  │  Chatbot UI      │    │
+│  │                      │  │                  │    │
+│  └──────────────────────┘  └──────────────────┘    │
+└───────────────────────────────────┬────────────────┘
                                     │
                                     ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          INGESTION LAYER                                   │
-│  ┌────────────┐  ┌────────────┐  ┌──────────────┐  ┌──────────────────┐   │
-│  │  Email     │  │  Physical  │  │    Cloud     │  │   API Upload     │   │
-│  │  Server    │  │  Scanner   │  │   Storage    │  │   (drag-drop)    │   │
-│  └────────────┘  └────────────┘  └──────────────┘  └──────────────────┘   │
-└───────────────────────────────────┬─────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────┐
+│                          INGESTION LAYER            │
+│  ┌────────────┐  ┌────────────┐  ┌──────────────┐   │
+│  │  Email     │  │  Physical  │  │    Cloud     │   │
+│  │  Server    │  │  Scanner   │  │   Storage    │   │
+│  └────────────┘  └────────────┘  └──────────────┘   │
+└───────────────────────────────────┬─────────────────┘
                                     │
                                     ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       PROCESSING PIPELINE                                  │
+┌───────────────────────────────────────────────────────────────────────────┐
+│                       PROCESSING PIPELINE                                 │
 │  ┌──────────────┐  ┌──────────┐  ┌─────────┐  ┌────────────────────────┐  │
 │  │  Document    │→ │   OCR    │→ │ Chunker │→ │  Embeddings Generator  │  │
 │  │  Validator   │  │ (95%+)   │  │ (512tok)│  │  (384-dim vectors)     │  │
 │  └──────────────┘  └──────────┘  └─────────┘  └────────────────────────┘  │
-│                                                                              │
-│  Quality Checks: ✓ File integrity  ✓ OCR confidence  ✓ Semantic chunking   │
-└───────────────────────────────────┬─────────────────────────────────────────┘
+│                                                                           │
+│  Quality Checks: ✓ File integrity  ✓ OCR confidence  ✓ Semantic chunking │
+└───────────────────────────────────┬───────────────────────────────────────┘
                                     │
                                     ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
+┌────────────────────────────────────────────────────────────────────────────┐
 │                      AI AGENT LAYER (LangGraph)                            │
-│                                                                              │
-│   ┌─────────────────┐                                                       │
-│   │   LLM Router  │  (LLaMA 3.2 8B - Fast Classification)                 │
-│   │                 │  Determines document type & complexity                 │
-│   └────────┬────────┘                                                       │
-│            │                                                                 │
-│            ▼                                                                 │
-│   ┌─────────────────────────────────────────────────────────────┐           │
-│   │   Document Parser Agent                                   │           │
-│   │  (LLaMA 3.1 70B + RAG)                                      │           │
-│   │                                                              │           │
-│   │  • Extracts: Tenant, Rent, Dates, Terms, Clauses           │           │
-│   │  • RAG: Queries Milvus for 5 similar leases                │           │
-│   │  • Validates: Cross-field consistency checks                │           │
-│   │  • Citations: Every field links to source location          │           │
-│   │  • Confidence: 98% accuracy on critical fields              │           │
-│   └─────────────────────┬───────────────────────────────────────┘           │
-│                         │                                                    │
-│            ┌────────────┴────────────┐                                       │
-│            ▼                         ▼                                       │
+│                                                                            │
+│   ┌─────────────────┐                                                      │
+│   │   LLM Router  │  (LLaMA 3.2 8B - Fast Classification)                  │
+│   │                 │  Determines document type & complexity               │
+│   └────────┬────────┘                                                      │
+│            │                                                               │
+│            ▼                                                               │
+│   ┌─────────────────────────────────────────────────────────────┐          │
+│   │   Document Parser Agent                                     │          │ 
+│   │  (LLaMA 3.1 70B + RAG)                                      │          │
+│   │                                                             │          │
+│   │  • Extracts: Tenant, Rent, Dates, Terms, Clauses            │          │
+│   │  • RAG: Queries Milvus for 5 similar leases                 │          │
+│   │  • Validates: Cross-field consistency checks                │          │
+│   │  • Confidence: 98% accuracy on critical fields              │          │
+│   └─────────────────────┬───────────────────────────────────────┘          │
+│                         │                                                  │
+│            ┌────────────┴────────────┐                                     │
+│            ▼                         ▼                                     │
 │   ┌──────────────────┐      ┌──────────────────┐                           │
 │   │   Compliance     │      │   Cost Analysis  │                           │
-│   │     Agent        │      │      Agent        │   (Parallel Processing)   │
+│   │     Agent        │      │      Agent       │    (Parallel Processing)  │
 │   │  (Hybrid AI+Rules)│     │  (LLaMA 3.1 70B) │                           │
-│   │                  │      │                   │                           │
-│   │  • 500+ rules    │      │  • Market comp.   │                           │
-│   │  • Regional sets │      │  • 5-yr TCO calc  │                           │
-│   │  • Risk scoring  │      │  • Sublease ID    │                           │
-│   │  • Recommendations│     │  • Optimization   │                           │
-│   └──────────┬───────┘      └─────────┬─────────┘                           │
+│   │                  │      │                  │                          │
+│   │  • 500+ rules    │      │  • Market comp.  │                          │
+│   │  • Regional sets │      │  • 5-yr TCO calc │                          │
+│   │  • Risk scoring  │      │  • Sublease ID   │                           │
+│   │  • Recommendations│     │  • Optimization  │                           │
+│   └──────────┬───────┘      └─────────┬────────┘                           │
 │              │                        │                                      │
 │              └────────────┬───────────┘                                      │
 │                           ▼                                                  │
@@ -167,13 +165,13 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 │  │  (PostgreSQL)      │  │  (Milvus)          │  │                      │  │
 │  │                    │  │                    │  │  • API responses     │  │
 │  │  Tables:           │  │  • 50K+ chunks     │  │  • Session data      │  │
-│  │  • Properties      │  │  • 87ms search     │  │  • 70% cache hits    │  │
+│  │  • Properties      │  │  • 87ms search     │  │                      │  │
 │  │  • Leases          │  │  • 94% retrieval   │  │  • 25x faster        │  │
-│  │  • Documents       │  │  • HNSW index      │  │                      │  │
+│  │  • Documents       │  │                    │  │                      │  │
 │  │  • Compliance      │  │  • Cosine sim.     │  │                      │  │
 │  │  • Utilization     │  │  • 384-dim vectors │  │                      │  │
 │  │                    │  │                    │  │                      │  │
-│  │  Relationships:    │  │  Use Cases:        │  │  TTL: 5-60 min       │  │
+│  │  Relationships:    │  │  Use Cases:        │  │                      │  │
 │  │  • Property ↔ Lease│ │  • RAG context     │  │                      │  │
 │  │  • Lease ↔ Doc     │  │  • Similar docs    │  │                      │  │
 │  │  • Lease ↔ Compliance│ │  • Deduplication   │  │                      │  │
@@ -191,17 +189,17 @@ Built an **end-to-end Agentic AI system** that automates lease analysis using:
 └───────────────────────────────────┬─────────────────────────────────────────┘
                                     │
                                     ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          OUTPUT LAYER                                       │
-│                                                                              │
+┌────────────────────────────────────────────────────────────────────────────┐
+│                          OUTPUT LAYER                                      │
+│                                                                            │
 │  ┌────────────────────┐  ┌────────────────────┐  ┌──────────────────────┐  │
-│  │     Dashboard API  │  │     Alert Engine   │  │     Report Generator │  │
-│  │  (FastAPI)         │  │                    │  │                      │  │
+│  │     Dashboard      │  │     Alert Engine   │  │     Report Generator │  │
+│  │                    │  │                    │  │                      │  │
 │  │                    │  │  • Email alerts    │  │  • Executive reports │  │
 │  │  • REST endpoints  │  │  • Slack notify    │  │  • Compliance PDFs   │  │
-│  │  • WebSocket       │  │  • SMS for critical│  │  • Excel exports     │  │
-│  │  • Swagger docs    │  │  • Real-time       │  │  • Custom templates  │  │
-│  │  • Rate limiting   │  │                    │  │                      │  │
+│  │                    │  │  • SMS for critical│  │  • Excel exports     │  │
+│  │                    │  │  • Real-time       │  │  • Custom templates  │  │
+│  │                    │  │                    │  │                      │  │
 │  └────────────────────┘  └────────────────────┘  └──────────────────────┘  │
 └─────────────────────────────────────────────────────────────────────────────┘
 
@@ -223,17 +221,16 @@ TOTAL: ~3.2 minutes (vs 2-3 hours manual)
 | Component | Technology | Purpose | Why Chosen |
 |-----------|-----------|---------|------------|
 | **Orchestration** | LangGraph 0.0.20 | Multi-agent workflow coordination | Native LLM integration, graph-based, easy modification |
-| **Primary LLM** | LLaMA 3.1 70B | Document parsing & analysis | Data sovereignty, cost-effective ($50/day vs $500 GPT-4) |
+| **Primary LLM** | LLaMA 3.1 70B | Document parsing & analysis | Data sovereignty, cost-effective |
 | **Router LLM** | LLaMA 3.2 8B | Fast document classification | 2x faster routing, sufficient for simple task |
-| **LLM Inference** | vLLM 0.3.0 | GPU-accelerated serving | 2.5x throughput via PagedAttention |
+| **LLM Inference** | vLLM 0.3.0 
 | **Vector DB** | Milvus 2.3 | Document similarity search (RAG) | On-premise, mature, 87ms search, production-proven |
 | **Embeddings** | sentence-transformers | Text → 384-dim vectors | Fast, accurate, self-hostable |
-| **Relational DB** | PostgreSQL 15 | Structured data storage | ACID compliance, complex queries, battle-tested |
+| **Relational DB** | PostgreSQL 15 | Structured data storage 
 | **Cache** | Redis 7 | High-speed temporary storage | 70% cache hit rate, 25x faster than DB |
-| **API** | FastAPI 0.109 | REST + WebSocket interface | Async support, auto-docs, Python native |
+| **API** | FastAPI 0.109 | REST |
 | **OCR** | Tesseract + Google Vision | PDF/image text extraction | Hybrid approach: 95%+ accuracy |
-| **Frontend** | React 18 + Next.js 14 | User interface | Modern, performant, great DX |
-| **Task Queue** | Celery 5.3 | Background job processing | Reliable, scalable, Redis-backed |
+| **Frontend** | React 18 + Next.js 14 | User interface |
 | **Monitoring** | Prometheus + Grafana | Metrics & visualization | Industry standard, powerful |
 | **Deployment** | Docker + K8s | Containerization & orchestration | Consistent environments, scalable |
 
