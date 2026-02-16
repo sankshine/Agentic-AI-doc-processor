@@ -229,7 +229,7 @@ TOTAL: ~3.2 minutes (vs 2-3 hours manual)
 | **Relational DB** | PostgreSQL 15 | Structured data storage 
 | **Cache** | Redis 7 | High-speed temporary storage | 70% cache hit rate, 25x faster than DB |
 | **API** | FastAPI 0.109 | REST |
-| **OCR** | Tesseract + Google Vision | PDF/image text extraction | Hybrid approach: 95%+ accuracy |
+| **OCR** |  Google Vision | PDF/image text extraction | Hybrid approach: 95%+ accuracy |
 | **Frontend** | React 18 + Next.js 14 | User interface |
 | **Monitoring** | Prometheus + Grafana | Metrics & visualization | Industry standard, powerful |
 | **Deployment** | Docker + K8s | Containerization & orchestration | Consistent environments, scalable |
@@ -290,7 +290,7 @@ class OCREngine:
     """
     Hybrid OCR approach:
     1. Google Vision API (primary): 98% accuracy, $1.50/1000 pages
-    2. Tesseract (fallback): 92% accuracy, free
+
     
     Quality checks:
     - Confidence scoring per word
@@ -305,10 +305,7 @@ class OCREngine:
             if result.confidence > 0.9:
                 return result
         except Exception:
-            pass  # Fall back to Tesseract
-        
-        # Tesseract fallback
-        result = self.tesseract.extract(file)
+
         
         # Quality checks
         if result.confidence < 0.7:
