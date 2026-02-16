@@ -669,7 +669,7 @@ def create_workflow() -> StateGraph:
 [See architecture diagram for detailed breakdown]
 
 **Database Design**:
-- **PostgreSQL**: Normalized schema, ACID compliance, complex joins
+- **PostgreSQL**: Normalized schema, complex joins
 - **Milvus**: HNSW index, cosine similarity, 87ms average search
 - **Redis**: LRU eviction, 5-60 min TTL, 70% hit rate
 
@@ -773,8 +773,6 @@ collection.create_index(field_name="embedding", index_params=index_params)
 
 **Performance**:
 - 50,000+ document chunks indexed
-- 87ms P50 search latency
-- 120ms P95 search latency
 - 94% retrieval accuracy
 - 8GB RAM usage
 
@@ -923,154 +921,6 @@ class ModelEvaluator:
 
 ---
 
-##  Deployment
-
-### Docker Infrastructure
-
-```yaml
-version: '3.8'
-
-services:
-  # Backend API
-  backend:
-    build: ./backend
-    ports: ["8000:8000"]
-    depends_on:
-      - postgres
-      - redis
-      - milvus
-      - vllm
-    environment:
-      - DATABASE_URL=postgresql://user:pass@postgres:5432/real_estate_db
-      - MILVUS_HOST=milvus
-      - REDIS_URL=redis://redis:6379
-      - LLM_API_BASE=http://vllm:8000/v1
-    volumes:
-      - ./data/uploads:/data/uploads
-      - ./data/outputs:/data/outputs
-
-  # PostgreSQL
-  postgres:
-    image: postgres:15-alpine
-    environment:
-      POSTGRES_DB: real_estate_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  # Redis
-  redis:
-    image: redis:7-alpine
-    volumes:
-      - redis_data:/data
-
-  # Milvus
-  milvus:
-    image: milvusdb/milvus:v2.3.0
-    ports: ["19530:19530"]
-    depends_on:
-      - etcd
-      - minio
-    volumes:
-      - milvus_data:/var/lib/milvus
-
-  # vLLM (GPU Inference)
-  vllm:
-    image: vllm/vllm-openai:latest
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 4
-              capabilities: [gpu]
-    environment:
-      - MODEL=meta-llama/Llama-3.1-70B-Instruct
-      - TENSOR_PARALLEL_SIZE=2
-      - GPU_MEMORY_UTILIZATION=0.9
-    ports: ["8001:8000"]
-    volumes:
-      - model_cache:/root/.cache/huggingface
-
-  # Celery Worker
-  celery:
-    build: ./backend
-    command: celery -A app.tasks worker --loglevel=info
-    depends_on:
-      - redis
-      - postgres
-    volumes:
-      - ./data/uploads:/data/uploads
-
-  # Frontend
-  frontend:
-    build: ./frontend
-    ports: ["3000:3000"]
-    depends_on:
-      - backend
-    environment:
-      - NEXT_PUBLIC_API_URL=http://backend:8000
-
-volumes:
-  postgres_data:
-  redis_data:
-  milvus_data:
-  model_cache:
-```
-
-### GPU Configuration
-
-**Hardware**:
-- 4× NVIDIA A100 80GB GPUs
-- 320GB total VRAM
-- NVLink interconnect
-- Liquid cooling
-
-**vLLM Optimizations**:
-```bash
-# Tensor Parallelism (split model across 2 GPUs)
---tensor-parallel-size 2
-
-# Memory utilization (use 90% of VRAM)
---gpu-memory-utilization 0.9
-
-# PagedAttention (2.5x better memory usage)
---enable-paged-attention
-
-# Context window
---max-model-len 4096
-```
-
-**Performance**:
-- CPU inference: 45 seconds/request
-- GPU inference: 1.5 seconds/request
-- **30x speedup** enabling production use
-
-### Deployment Commands
-
-```bash
-# Start all services
-docker-compose up -d
-
-# Scale workers
-docker-compose up -d --scale celery=4
-
-# View logs
-docker-compose logs -f backend
-
-# Monitor GPU usage
-docker exec vllm nvidia-smi
-
-# Database backup
-./scripts/backup.sh
-
-# Rolling restart (zero downtime)
-./scripts/rolling-restart.sh
-```
-
----
-
 ## 📈 Results & Impact
 
 ### Performance Metrics
@@ -1078,7 +928,7 @@ docker exec vllm nvidia-smi
 | Metric | Before | After | Improvement |
 |--------|--------|-------|-------------|
 | **Processing Time** | 2-3 hours | 3.2 minutes | ↓ 97% |
-| **Automation Rate** | 0% | 72% | ↑ 72pp |
+| **Automation Rate** | 0% | 72% | 
 | **Accuracy (Critical Fields)** | 88% (manual) | 98% (AI) | ↑ 10pp |
 | **Compliance Checks** | 2 hours | 30 seconds | ↓ 99% |
 | **Documents/Day** | 50 | 500+ | ↑ 10x |
@@ -1088,7 +938,6 @@ docker exec vllm nvidia-smi
 
 **Cost Savings**:
 -  **$1.2M annual savings** (analyst time reduction)
--  **$180K GPU infrastructure savings** (vs buying 20+ CPU servers)
 -  **$1.4M renegotiation opportunities** identified
 -  **$2.1M sublease potential** discovered
 -  **$2.3M space optimization** opportunities
