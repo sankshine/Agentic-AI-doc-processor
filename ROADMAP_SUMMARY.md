@@ -3,7 +3,7 @@
 
 ---
 
-## 📅 MONTH 1: Discovery & MVP (January 2024)
+## 📅 MONTH 1: Discovery & MVP 
 
 ### Week 1-2: Research & Planning
 **Activities:**
@@ -88,7 +88,7 @@
 
 ---
 
-## 📅 MONTH 2: Core Build (February 2024)
+## 📅 MONTH 2: Core Build 
 
 ### Week 1-2: OCR Pipeline Development
 **Implementation:**
@@ -215,7 +215,7 @@ CREATE TABLE leases (
 
 ---
 
-## 📅 MONTH 3: Agent Development (March 2024)
+## 📅 MONTH 3: Agent Development 
 
 ### Week 1: LLM Router Agent
 **Purpose:** Fast document classification & routing
