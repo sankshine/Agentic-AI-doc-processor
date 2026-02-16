@@ -52,17 +52,10 @@
 
 **Setup Activities:**
 - vLLM deployment configuration
-- GPU procurement: 4× NVIDIA A100 80GB (3-week lead time)
+- GPU procurement: 4× NVIDIA A100 80GB on prem available
 - Benchmarking tests: 98% accuracy on test set
 - Cost analysis: $50/day vs $500/day = 90% cost reduction
 
-**Infrastructure Order:**
-- 4× A100 GPUs ($150K one-time)
-- Liquid cooling rack
-- 32-core CPU servers
-- 5TB NVMe storage
-
----
 
 ### Week 4: MVP Definition
 **Scope:**
@@ -78,17 +71,17 @@
 - Technical feasibility proven
 
 **Team:**
-- 2 ML Engineers hired
-- 1 Backend Developer hired
-- 1 Frontend Developer hired
-- 0.5 DevOps Engineer allocated
+- 2 ML Engineers
+- 1 Backend Developer 
+- 1 Frontend Developer 
+- 1 DevOps Engineer 
 
 ---
 
 ### 🎯 MILESTONE 1: Foundation Complete
 ✅ Tech stack selected and approved
 ✅ Architecture design finalized
-✅ Team assembled (5.5 FTE)
+✅ Team assembled (6 FTE)
 ✅ Infrastructure ordered
 ✅ 150+ user stories documented
 ✅ Budget secured ($915K)
@@ -210,10 +203,6 @@ CREATE TABLE leases (
 -- + 3 more tables: documents, compliance_records, space_utilization
 ```
 
-**Indexing Strategy:**
-- B-tree indexes on frequently queried fields
-- Partial indexes for status filtering
-- Date partitioning on leases table
 
 **Milvus Collection:**
 - Collection name: lease_chunks
@@ -226,12 +215,7 @@ CREATE TABLE leases (
 - 45 minutes indexing time
 - 8GB RAM usage
 
-**Redis Cache:**
-- LRU eviction policy
-- 5-60 minute TTL
-- Key patterns: api_response:{hash}
 
----
 
 ### 🎯 MILESTONE 2: Pipeline Operational
 ✅ End-to-end pipeline working
@@ -250,7 +234,6 @@ CREATE TABLE leases (
 
 **Implementation:**
 - Model: LLaMA 3.2 8B (faster, smaller)
-- Temperature: 0.1 (consistent classification)
 - Response format: JSON
 
 **Classification Types:**
@@ -261,7 +244,7 @@ CREATE TABLE leases (
 - Assignment notice
 - Appraisal report
 - Environmental report
-- Zoning certificate
+- Purchase document
 
 **Performance:**
 - 97% classification accuracy
@@ -423,7 +406,7 @@ ONTARIO_RULES = [
 
 ---
 
-### 🎯 MILESTONE 3: All Agents Operational
+###  MILESTONE 3: All Agents Operational
 ✅ 4 agents working independently
 ✅ 90%+ accuracy on each agent
 ✅ 500 documents processed end-to-end
@@ -518,7 +501,6 @@ async def document_status(websocket: WebSocket, document_id: str):
 **Testing:**
 - Postman collection created
 - Load testing: 100 concurrent users
-- Security testing: OWASP Top 10
 - API documentation validated
 
 ---
@@ -598,7 +580,7 @@ else:
 
 ---
 
-### 🎯 MILESTONE 4: Production Ready
+### MILESTONE 4: Production Ready
 ✅ System integrated end-to-end
 ✅ All tests passing (400+ tests)
 ✅ Performance benchmarks met
