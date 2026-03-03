@@ -369,7 +369,7 @@ class SemanticChunker:
 **Metrics**:
 - Average 28 chunks per lease document
 - 1.2 second chunking time
-- 94% retrieval accuracy (vs 87% without overlap)
+- 94% retrieval accuracy 
 - 15% memory overhead (worth it for quality)
 
 #### 4. Embeddings Generator
